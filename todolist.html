@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
+
+ <style type="text/css">
+   
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,400);
+
+body {
+font: normal normal 13px/16px "Open Sans", sans-serif;
+background: #000000;
+}
+
+.container{
+padding: 20px;
+width: 300px;
+margin: 0 auto;
+margin-top: 40px;
+background: white;
+border-radius: 5px;}
+
+form {
+display: inline-block;
+}
+
+input{
+padding: 4px 15px 4px 5px;
+}
+
+#button{
+display: inline-block;
+background-color:#000000;
+color:#ffffff;
+border-radius: 5px;
+text-align:center;
+margin-top:2px;
+padding: 5px 15px;
+}
+
+#button:hover{
+cursor: pointer;
+opacity: .8;}
+
+ol {padding-left: 20px;}
+
+ol li {padding: 5px;color:#000;}
+
+ol li:nth-child(even){background: #dfdfdf;}
+
+.remove{text-decoration: line-through;}
+
+li:hover{
+ cursor: pointer;
+}
+
+ </style>
+</head>
+ <body>
+   
+   <div class="container">
+   <h2>LIST</h2>
+
+      
+   <form name="toDoList">
+     <input type="text" name="item"/>
+   </form>
+   <br>
+   <div id="button">Add</div>
+   <br/>
+   <ol></ol>
+     
+     
+   
+   </div>
+
+   <script type="text/javascript">
+     
+     $(document).ready(
+   function(){
+       $('#button').click(
+           function(){
+               var add = $('input[name=item]').val();
+                $('ol').append('<li>' + add + '</li>');
+           });
+      
+      $("input[name=item]").keyup(function(event){
+         if(event.keyCode == 13){
+           $("#button").click();
+         }         
+     });
+     
+     $(document).on('dblclick','li', function(){
+       $(this).toggleClass('remove').fadeOut('slow');    
+     });
+     
+     $('input').focus(function() {
+       $(this).val('');
+     });
+    
+     
+   }
+);
+   </script>
+ </body>
+ </html>
